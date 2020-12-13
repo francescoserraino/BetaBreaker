@@ -1,0 +1,105 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+
+<moonboardscreen>:
+    FloatLayout:
+        canvas:
+            Color:
+                rgb: utils.get_color_from_hex('#39B3F2')
+            Rectangle:
+                size: self.size
+                pos:self.pos
+        GridLayout:
+            cols: 1
+            pos_hint: {'top':.98,'left':1}
+            size_hint: 1, .7
+            Image:
+                source: 'icons/moonboard.jpg'               
+        GridLayout: 
+            rows: 1
+            pos_hint: {'top':.19,'left':1}
+            size_hint: 1, .05
+            TextInput:
+                id: start_holds
+                hint_text: 'Start Holds: a1,b2,c3'
+                size_hint: .6, .1
+                pos_hint: {'top':.1,'left':1}
+
+            ImageButton:
+                source: 'icons/grade.png'
+                on_release:
+                    new_var = app.functions.grade_predictor(start_holds.text, intermediate_holds.text, finish_holds.text)
+                    print(new_var)
+                    app.small_func.save(new_var)
+                    root.btn()
+        GridLayout: 
+            pos_hint: {'top':.12,'left':1}
+            rows: 1
+            size_hint: 0.37, .05
+            TextInput:
+                id: intermediate_holds
+                hint_text: 'Intermedite Holds: a1,b2,c3'
+                size_hint: .6, .1
+                pos_hint: {'top':.1,'left':1}
+        GridLayout: 
+            rows: 1
+            pos_hint: {'top':0.05,'left':1}
+            size_hint: 1, 0.05
+            TextInput:
+                id: finish_holds
+                hint_text: 'Finish Holds: a1,b2,c3'
+                size_hint: .6,.1
+                pos_hint: {'top':.1,'left':1}
+            ImageButton:
+                source: 'icons/beta.png'
+                on_release:
+                    y = app.functions.closest_vid_finder(start_holds.text, intermediate_holds.text, finish_holds.text)
+                    app.small_func.web_linker(y)
+        GridLayout:
+            rows: 1
+            pos_hint: {'top':0.99,'left':1}
+            size_hint: .08, .08
+            ImageButton:
+                source: 'icons/back_arrow.png'
+                on_release:
+                    app.change_screen('home_screen')
+
+                    
+                    
+                    
+
+
+<Widgets>:
+    Button:
+        text: "Press me to return"
+        on_release: root.btn()
+
+
+<P>:
+    size_hint: 0.5,0.5
+    auto_dismiss: False
+    title: "Este es mi Popup"
+    id: select
+    BoxLayout:
+        Button:
+            text: 'Close'
+            on_press: root.dismiss()
+            size_hint: .2,.1
+            pos_hint: {"x":5, "y":4.5}
+        Label:
+            id: idea
+            text: select.idea_texto
+            size_hint: .6,.1
+            pos_hint: {"x":0.2, "y":2.5} 
+            
+
+
+        
+            
+
+
+                
+
+        
+    

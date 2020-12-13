@@ -1,0 +1,20 @@
+#: include kv/homescreen.kv
+#: include kv/moonboardscreen.kv
+#: include kv/results.kv
+GridLayout:
+    cols: 1
+    ScreenManager:
+        id: screen_manager
+        HomeScreen:
+            name: "home_screen"
+            id: home_screen
+        moonboardscreen:
+            name: 'moonboard_screen'
+            id: moonboard_screen
+        results:
+            name: 'results_screen'
+            id: results_screen
+
+
+        
+        

@@ -1,0 +1,38 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+#: import utils kivy.utils
+
+<ResultsScreen>:
+    FloatLayout:
+        canvas:
+            Color:
+                rgb: utils.get_color_from_hex('#39B3F2')
+            Rectangle:
+                size: self.size
+                pos:self.pos
+        GridLayout:
+            rows: 1
+            pos_hint: {'top':1,'left':1}
+            size_hint: 1, .2        
+        Label:
+            pos_hint: {'top':.95,'left':1}
+            size_hint: 1, .1
+            text: '12 Day Streak'
+            id: streak_label
+        GridLayout:
+            cols: 1
+            pos_hint: {'top':.8,'left':1}
+            size_hint: 1, .5
+            Image:
+                source: 'icons/logo.png'            
+        GridLayout:
+            rows: 1
+            pos_hint: {'top':.2,'left':1}
+            size_hint: 1, .1
+            ImageButton:
+                source: 'icons/get_started.png'
+                on_release:
+                    app.change_screen('moonboard_screen')
+          
+ 

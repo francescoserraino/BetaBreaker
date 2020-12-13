@@ -1,0 +1,26 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Thu Dec 10 13:52:33 2020
+
+@author: francescoserraino
+"""
+
+<InsertData>:
+    FloatLayout:
+        canvas:
+            Rectangle:
+                size: self.size
+                pos: self.pos
+                source: "background/background_main.png"
+   GridLayout:
+       rows: 1
+       pos_hint: {"top": 1, "right": 1}
+       size_hint: 1, .8
+       TextInput:
+           id: email_main
+           hint_text: "E-Mail Address"
+       LabelButton:       
+           text: "Submit"
+           on_release:
+               root.check_mail()
